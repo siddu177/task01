@@ -11,13 +11,18 @@ app.controller('ListOptionsController', listOptionsController);
                 icon : "2.jpg"
             }
         ];
+
+
         SpatialNavigation.add({
-            selector: '.focusable'
+            selector: '.focusElement',
+            sectionId : 'bottomSheetSection',
+            direction: 'up', 'down',
         });
-
-        $timeout (function () {SpatialNavigation.makeFocusable();},300);
-        // Make the *currently existing* navigable elements focusable.
-
-        $timeout (function () {SpatialNavigation.focus();},600);
+        $timeout (function () {
+            SpatialNavigation.makeFocusable();
+            },300);
+        $timeout (function () {
+            SpatialNavigation.focus();
+            },600);
 
     }

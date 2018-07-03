@@ -1,7 +1,7 @@
 app.controller('SeeAllController', seeAllController);
-    function seeAllController($scope) {
+    function seeAllController($scope, $timeout) {
         var self =  this;
-        console.log('console');
+        self.seeAll = true;
         self.gamesThumbnail = [
             {
                 gameName : "PATTI 3 CHAMP",
@@ -75,21 +75,25 @@ app.controller('SeeAllController', seeAllController);
             },
         ];
 
-        window.addEventListener('load', function() {
-            SpatialNavigation.init();
-            SpatialNavigation.add({
-                selector: '.focusable',
-                // We can define our own filter function.
-                navigableFilter: function(elem) {
-                    return elem.className.indexOf('filterout') < 0;
-                }
-            });
-            SpatialNavigation.makeFocusable();
-            SpatialNavigation.focus();
-            $('.focusable')
-                .on('SpatialNavigation:enter-down', function () {
-                    $('.back-button').click()
+        $('html').keyup(function(e){
+            if(e.keyCode == 8){
+                $('.back-button').click();
 
-                });
+            }
         });
+        if (self.seeAll){
+            SpatialNavigation.init();
+            $timeout(function () {
+                SpatialNavigation.add({
+                    selector: '.focusable',
+                    // We can define our own filter function.
+                    navigableFilter: function(elem) {
+                        return elem.className.indexOf('filterout') < 0;
+                    }
+                });
+                SpatialNavigation.makeFocusable();
+                SpatialNavigation.focus();
+            },1000)
+        }
+       self.seeAll = !self.seeAll
     }

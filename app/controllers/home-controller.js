@@ -1,6 +1,7 @@
 app.controller('HomeController', homeController);
     function homeController($scope, $timeout) {
         var self = this;
+        self.homePage = true;
         self.gamesThumbnail = [
             {
                 gameName : "PATTI 3 CHAMP",
@@ -38,22 +39,24 @@ app.controller('HomeController', homeController);
                 gameID : 7
             }
         ];
-        window.addEventListener('load', function() {
+
+        if (self.homePage){
             SpatialNavigation.init();
-            SpatialNavigation.add({
-                selector: '.focusable',
-                // We can define our own filter function.
-                navigableFilter: function(elem) {
-                    return elem.className.indexOf('filterout') < 0;
-                }
-            });
-            SpatialNavigation.makeFocusable();
-            SpatialNavigation.focus();
+           $timeout(function () {
+               SpatialNavigation.add({
+                   selector: '.focusable',
+                   // We can define our own filter function.
+                   navigableFilter: function(elem) {
+                       return elem.className.indexOf('filterout') < 0;
+                   }
+               });
+               SpatialNavigation.makeFocusable();
+               SpatialNavigation.focus();
+           })
             $('.focusable')
                 .on('SpatialNavigation:enter-down', function () {
                     $('.cssbuttongo').click()
 
                 });
-        });
-
+        }
     }
