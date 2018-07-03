@@ -1,0 +1,27 @@
+<div layout="column">
+    <div class="section-wrapper" layout="row" layout-wrap>
+        <div class="grid-item focusable" layout="column" ng-repeat="game in ctrl.gamesThumbnail" ng-if="game.gameID !== 7">
+            <div class="img-thumb">
+                <img ng-src="assets/images/{{game.gameThumb}}">
+            </div>
+            <div class="title">
+                <span>{{game.gameName}}</span>
+            </div>
+        </div>
+
+
+        <a href="#!seeAll" class="focusable cssbuttongo">
+            <div class="grid-item focusable" layout="column"
+                 ng-repeat="game in ctrl.gamesThumbnail"
+                 ng-if="game.gameID === 7" ng-click="ctrl.seeAllGrids()">
+                <div class="img-thumb">
+                    <img ng-src="assets/images/{{game.gameThumb}}">
+                </div>
+                <div class="title">
+                    <span>{{game.gameName}}</span>
+                </div>
+            </div>
+        </a>
+
+    </div>
+</div>

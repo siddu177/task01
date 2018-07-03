@@ -1,0 +1,19 @@
+<div layout="column">
+    <div class="section-header" layout="row">
+        <div class="arrow-back">
+          <a class="back-button focusable" href="#!home"> Back</a>
+        </div>
+        All games are listed here
+    </div>
+    <div class="section-wrapper" layout="row" layout-wrap>
+        <div class="grid-item focusable"
+             layout="column" ng-repeat="game in ctrl.gamesThumbnail">
+            <div class="img-thumb">
+                <img ng-src="assets/images/{{game.gameThumb}}">
+            </div>
+            <div class="title">
+                <span>{{game.gameName}}</span>
+            </div>
+        </div>
+    </div>
+</div>

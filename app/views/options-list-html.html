@@ -1,0 +1,12 @@
+<md-bottom-sheet class="md-list md-has-header">
+    <div class="bottomsheet" layout="column">
+        <div class="focusable listItem" ng-repeat="item in ctrl.items">
+            <div layout="row" layout-align="start center">
+                <div class="icon">
+                    <img ng-src="assets/images/{{item.icon}}">
+                </div>
+                {{item.name}}
+            </div>
+        </div>
+    </div>
+</md-bottom-sheet>
