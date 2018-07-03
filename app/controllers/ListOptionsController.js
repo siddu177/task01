@@ -14,9 +14,9 @@ app.controller('ListOptionsController', listOptionsController);
 
 
         SpatialNavigation.add({
-            selector: '.focusElement',
-            sectionId : 'bottomSheetSection',
-            direction: 'up', 'down',
+            id: 'bottomSheetSection',
+            selector: '#bottomSheetSection .focusElement',
+            restrict: 'self-only',
         });
         $timeout (function () {
             SpatialNavigation.makeFocusable();
